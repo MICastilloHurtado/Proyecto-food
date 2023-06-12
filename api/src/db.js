@@ -1,9 +1,13 @@
 require('dotenv').config();
 const { Sequelize } = require('sequelize');
 const fs = require('fs');
+const recipeModels = require('./models/Recipes')
+const dietsModels = require('./models/Diets')
 const path = require('path');
 const {
-  DB_USER, DB_PASSWORD, DB_HOST,
+  DB_USER, 
+  DB_PASSWORD,
+  DB_HOST,
 } = process.env;
 
 const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/food`, {
@@ -29,13 +33,16 @@ let capsEntries = entries.map((entry) => [entry[0][0].toUpperCase() + entry[0].s
 sequelize.models = Object.fromEntries(capsEntries);
 
 // En sequelize.models están todos los modelos importados como propiedades
+
 // Para relacionarlos hacemos un destructuring
-const { Recipe } = sequelize.models;
+const { Recipes, Diets } = sequelize.models;
 
 // Aca vendrian las relaciones
-// Product.hasMany(Reviews);
+Recipes.belongsToMany(Diets, { through: 'RecipeDiets' });
+Diets.belongsToMany(Recipes, { through: 'RecipeDiets' });
 
 module.exports = {
-  ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
-  conn: sequelize,     // para importart la conexión { conn } = require('./db.js');
+  ...sequelize.models,
+  conn: sequelize 
+      // para importart la conexión { conn } = require('./db.js');
 };
