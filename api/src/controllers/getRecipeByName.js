@@ -33,9 +33,10 @@ const getRecipeByName = async (req, res) => {
 
             const dbRecipes = await Recipes.findAll({
                 attributes: ['id', 'name', 'image', 'summary', 'healthScore', 'steps', 'created'],
-                where: {name: name},
                 include: {model: Diets, attributes: ['name']}
             });
+
+            console.log(dbRecipes)
 
             const dbRecipesAll = dbRecipes.map(recipe => {
                 const diets = recipe.diets || recipe.Diets.map(diet => diet.name);

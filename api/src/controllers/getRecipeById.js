@@ -22,8 +22,6 @@ const getRecipeById =  async (req, res) => {
         return res.status(200).json(searchDatabaseRecipe);
       };
          
-
-
       const {data} = await axios(`https://api.spoonacular.com/recipes/${id}/information?apiKey=${API_KEY}&includeNutrition=true`);
 
 
@@ -48,6 +46,8 @@ const getRecipeById =  async (req, res) => {
       }
 
       return res.status(200).json(associatedDiet);
+
+
       
    } catch (error) {
       
