@@ -28,6 +28,9 @@ const Details = () => {
         return "";
       };
 
+      
+      
+
       if (!recipe.name) {
         return <div className={style.loading}>Loading...</div>; 
       }
@@ -39,7 +42,6 @@ const Details = () => {
             <img src={recipe.image} alt='IMAGE NOT FOUND' className={style.image}/>
             <h2 className={style.name}>Summary: {recipe.summary}</h2>
             <h2 className={style.name}>HealthScore: {recipe.healthScore}</h2>
-            <h2 className={style.name}>Steps: {recipe.steps}</h2>
             <h2 className={style.name}>Diets: {getDietsString(recipe.diets)}</h2>
         </div>
     )
