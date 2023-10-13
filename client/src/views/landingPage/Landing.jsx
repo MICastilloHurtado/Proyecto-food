@@ -14,12 +14,7 @@ export default function Landing() {
           <h1> PI SPOONACULAR 2023</h1>
           <span>Marcos Isaac Castillo Hurtado </span>
           <span>
-            This PI is focused on the development of an API of healthy recipes
-            to maintain a healthy eating level, selecting from hundreds of
-            recipes that allow you to facilitate your daily diet efficiently and
-            effectively. You will be able to search for the recipe to your
-            liking, and follow the step by step of how you can prepare it, and
-            the types of diets that this food recipe applies.
+          Este PI está enfocado en el desarrollo de una API de recetas saludables para mantener un nivel de alimentación saludable, seleccionando entre cientos de recetas que te permitan facilitar tu alimentación diaria de manera eficiente y efectiva. Podrás buscar la receta de tu agrado, y seguir el paso a paso de cómo puedes prepararla, y los tipos de dietas que aplica esta receta de comida.
           </span>
 
           <Link to="/home">
